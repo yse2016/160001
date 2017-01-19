@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Canvas</title>
+</head>
+<body style="background-color: #555555">
+	<h1>Canvas</h1>
+	<hr>
+
+	<canvas id="canvas" width="1000" height="1000"></canvas>
+
+	<script type="text/javascript">
+		// 準備
+		var canvas = document.getElementById('canvas');
+		var ctx = canvas.getContext('2d');
+		var y =300;
+
+		// 描く
+		for (var i=0; i <= 220; i++) {
+			// ctx.globalAlpha = 0.01;
+			ctx.fillStyle = "#00ff00";
+			// ctx.strokeRect(150+i, 150+i, 100, 100);
+			ctx.fillRect(150, 150+i, 150, 100);
+
+		}
+
+		ctx.fillStyle = "#00ff005f";
+		ctx.fillRect(25, 25, 100, 100);
+		ctx.beginPath();
+		//三角
+	ctx.moveTo(50,170+y);            // 最初の点
+	ctx.lineTo(150,85*2+y);            // 2番目の点
+	ctx.lineTo(150,10*2+y);            // 3番目の点
+	ctx.closePath(); 
+	ctx.stroke(); 
+	ctx.moveTo(200*2,170+y);            // 最初の点
+	ctx.lineTo(150*2,85*2+y);            // 2番目の点
+	ctx.lineTo(150*2,10*2+y);            // 3番目の点
+	ctx.closePath(); 
+	ctx.stroke(); 
+
+	ctx.beginPath();
+	ctx.fillStyle = "#0000ff";
+	ctx.moveTo(150,150);            // 最初の点
+	ctx.lineTo(300,150);            // 2番目の点
+	ctx.lineTo(225,50);            // 3番目の点
+	ctx.fill();
+	//円
+	ctx.beginPath();
+	ctx.fillStyle = "#555555";
+	ctx.arc(225, 250, 40, 0, Math.PI*2, false);
+	ctx.fill();
+	ctx.beginPath();
+	ctx.arc(225, 250, 40, 0, Math.PI*2, false);
+		ctx.closePath(); 
+	ctx.stroke(); 
+
+	ctx.beginPath();
+	ctx.fillStyle = "#ff0000";
+	ctx.moveTo(225,580);
+	ctx.arc(225, 530, 50, 0, Math.PI,true);
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "#ff0000";
+	ctx.moveTo(270,580);
+	ctx.arc(225, 530, 50, 0, Math.PI,true);
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "#ff0000";
+	ctx.moveTo(180,580);
+	ctx.arc(225, 530, 50, 0, Math.PI,true);
+	ctx.fill();
+
+
+	/////////////////////////////
+
+
+	ctx.beginPath();
+	ctx.fillStyle = "#ffff00";
+	ctx.moveTo(225,560);
+	ctx.arc(225, 525, 30, 0, Math.PI,true);
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "#ffff00";
+	ctx.moveTo(260,560);
+	ctx.arc(230, 530, 30, 0, Math.PI,true);
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.fillStyle = "#ffff00";
+	ctx.moveTo(190,560);
+	ctx.arc(220, 530,30, 0, Math.PI,true);
+	ctx.fill();
+
+	//曲線
+	ctx.beginPath();
+	ctx.moveTo(450,10);
+	ctx.bezierCurveTo(450,0,500,80,400,100);
+	ctx.stroke();
+	ctx.closePath();
+
+
+	</script>
+</body>
+</html>
