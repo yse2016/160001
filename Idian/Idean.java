@@ -11,6 +11,8 @@ public  class Idean{
 class Ideaman implements ActionListener{
 	JFrame frame;
     JPanel panel;
+    JTextArea textArea;
+	JScrollPane scrollPane;
 
 	public Ideaman(){
 		frame = new JFrame("あいでぃあん");
@@ -22,12 +24,16 @@ class Ideaman implements ActionListener{
 
 
         frame.add(panel);
-       
 
+        scrollPane = new JScrollPane(textArea);
+       	Container con = frame.getContentPane();
+		con.setLayout(new GridLayout(2, 1));
+		con.add(panel);
+       	con.add(scrollPane);
 
        	frame.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent ae){
-		
+
 	}
 }
