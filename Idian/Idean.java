@@ -11,6 +11,8 @@ public  class Idean{
 class Ideaman implements ActionListener{
 	JFrame frame;
     JPanel panel;
+    JButton btnOpen;
+    JButton btnSave;
     JTextArea textArea;
 	JScrollPane scrollPane;
 
@@ -20,9 +22,18 @@ class Ideaman implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();//パネル
+         //ボタン（開く）
+        btnOpen = new JButton("求める！！");
+        btnOpen.addActionListener(this);
+        btnOpen.setActionCommand("open");
+		//ボタン（保存）
+        btnSave = new JButton("おぼえさせる");
+        btnSave.addActionListener(this);
+        btnSave.setActionCommand("save"); 
 
 
-
+        panel.add(btnOpen);
+        panel.add(btnSave);
         frame.add(panel);
 
         scrollPane = new JScrollPane(textArea);
@@ -34,6 +45,6 @@ class Ideaman implements ActionListener{
        	frame.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent ae){
-
+		String cmd = ae.getActionCommand();
 	}
 }
