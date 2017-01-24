@@ -54,10 +54,25 @@ class Ideaman implements ActionListener{
 				BufferedReader br = new BufferedReader(fr);
 				// 2. ファイルからデータを読み取って表示する
 				String line ;
+				int i=0;
 				while ((line=br.readLine()) != null) {
-				 	textArea.append(line);
-				 	textArea.append("\n");
-				} 			
+				i++;
+				}
+				// int num=（０〜i）;
+				// j=3;
+				// i=0;
+				for (int j=0; j<i; j++){
+					// i++
+					// if(i==j)
+				 		textArea.append(line);
+				 		textArea.append("\n");
+				 		System.out.println(i);
+					// } 			
+				}
+
+								 		
+				 		
+
 				// 3. ファイルを閉じる
 				br.close();
 			} catch (IOException e) {
@@ -68,7 +83,7 @@ class Ideaman implements ActionListener{
 			try {
 				// 1. ファイルを準備する
 				File f = new File("result.txt");
-				FileWriter fw = new FileWriter(f);
+				FileWriter fw = new FileWriter(f,true);
 				BufferedWriter bw = new BufferedWriter(fw);
 				PrintWriter pw = new PrintWriter(bw);
 				String  data = textArea.getText();
