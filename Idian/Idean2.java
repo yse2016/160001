@@ -60,7 +60,7 @@ class IdeaMan implements ActionListener{
 		btnSave.addActionListener(this);
 		btnSave.setActionCommand("save");
 		try{
-				File inFile			= new File("data.txt");
+				File inFile			= new File("words.txt");
 				FileReader fr		= new FileReader(inFile);
 				BufferedReader br	= new BufferedReader(fr);
 

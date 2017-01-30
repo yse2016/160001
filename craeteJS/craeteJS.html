@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>craeteJS</title>
+	
+</head>
+<body>
+	<h1>createJS</h1>
+	<hr>
+	<canvas id="mycanvas" width="700" height="900"></canvas>
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+
+
+		window.addEventListener('load',init);
+
+		function init() {
+			var stage   = new createjs.Stage("mycanvas");
+			var sikaku  = new createjs.Shape();
+			var hosi	= new createjs.Shape();
+			var maru	= new createjs.Shape();
+			var danngo  = new createjs.Shape();
+			//四角
+			sikaku.graphics.beginFill("#039393");
+			sikaku.graphics.drawRoundRect(100,100,100,100,20,20);
+			//星
+			hosi.graphics.beginFill("#039393"); // 赤色で描画するように設定
+			hosi.graphics.drawPolyStar(300, 150, 75, 10, 0.6, -90); //75pxの星を記述
+			//丸
+			maru.graphics.beginStroke("#039393");
+			maru.graphics.setStrokeStyle(5);
+			maru.graphics.drawRoundRect(400,100,50,50,25,25);
+			//団子
+			var Dx = 150;
+			var Dy = 300;
+			var Ds = 50;
+			danngo.graphics.beginFill("#ff0000");
+			danngo.graphics.drawCircle(Dx,Dy,Ds);
+			danngo.graphics.beginFill("#00ff00");
+			danngo.graphics.drawCircle(Dx+Ds*2,Dy,Ds);
+			danngo.graphics.beginFill("#0000ff");
+			danngo.graphics.drawCircle(Dx+Ds*4,Dy,Ds);
+			
+			
+			stage.addChild(sikaku);
+			stage.addChild(maru);
+			stage.addChild(hosi);
+			stage.addChild(danngo);
+			// //自動更新
+			// createjs.Ticker.addiventListenar("tick",stage);
+			// //イベント監視
+			// createjs.Ticker.addiventListenar("tick",move)
+			// function move(){
+			//  	maru.x += 4;
+				stage.update();
+			 // };
+
+		}
+
+
+		
+	</script>
+
+
+
+</body>
+</html>
