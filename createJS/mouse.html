@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Aloha.html</title>
+</head>
+<body>
+    <h1>図形</h1>
+    <hr>
+    <canvas id="myCanvas" width="600" height="500"></canvas>
+    <style>   
+    	background-color: #ff00ff;
+
+    </style>
+
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        window.addEventListener('load',init);
+        function init(){
+            var stage = new createjs.Stage("myCanvas");
+            var shikaku = new createjs.Shape();
+            var hosi = new createjs.Shape();
+            var muki = 1;
+            var muki2= 1;
+            var h = Math.random()*10;
+
+            shikaku.graphics.beginFill("#ff0000 ");
+            shikaku.graphics.drawRect(0, 0, 100, 100);
+
+            hosi.graphics.beginFill("#039393"); // 赤色で描画するように設定
+            hosi.graphics.drawPolyStar(0, 0, 70, h, 0.6, -90); //75pxの星を記述
+
+            stage.addChild(hosi);
+            
+
+			shikaku.addEventListener('click',handleClick);
+
+            createjs.Ticker.on('tick',function(){
+	            // マウス座標を取得する
+	            var mx = stage.mouseX;
+	            var my = stage.mouseY;
+
+            	hosi.x = mx;
+    			hosi.y = my;
+    			stage.addChild(shikaku);
+                stage.update();
+
+                
+            });
+            function handleClick(event){
+            	alert("aloha");
+            }
+            
+
+        }
+    </script>
+</body>
+</html>

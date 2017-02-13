@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Aloha.html</title>
+</head>
+<body>
+    <h1>図形</h1>
+    <p id="msg">キー値:</p>
+    <hr>
+    <canvas id="myCanvas" width="700" height="500"></canvas>
+    <style>
+        body{   
+        	background-color: #0000ff;
+        }
+        canvas{
+            background-color: #ffffff;
+        }
+    </style>
+
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        window.addEventListener('load',init);
+        
+        function init(){
+            var stage    = new createjs.Stage("myCanvas");
+            var shikaku  = new createjs.Shape();
+            var player   = new createjs.Shape();
+            var hako     = new createjs.Shape();
+            var e1       = new createjs.Shape();
+            var e2       = new createjs.Shape();
+            var e3       = new createjs.Shape();
+
+            shikaku.graphics.beginFill("#ff0000");
+            shikaku.graphics.drawRect(0,0,40,400);//左壁
+            shikaku.graphics.drawRect(0,0,700,20);//上壁
+            shikaku.graphics.drawRect(0,480,700,20);//下壁
+            shikaku.graphics.drawRect(660,100,40,400);//右壁
+
+            hako.graphics.beginFill("#ff0000");
+            hako.graphics.drawRect(100,100,100,100);
+            hako.graphics.drawRect(100,300,100,100);
+            hako.graphics.drawRect(270,100,100,100);
+            hako.graphics.drawRect(270,300,100,100);
+            hako.graphics.drawRect(450,100,100,100);
+            hako.graphics.drawRect(450,300,100,100);
+
+            player.graphics.beginFill("#00ff00");
+            player.graphics.drawCircle(20,450, 10);
+            
+            e1.graphics.beginFill("#550055");
+            e1.graphics.drawCircle(70,85,10);
+
+            e2.graphics.beginFill("#550055");
+            e2.graphics.drawCircle(70,250,10);
+
+            e3.graphics.beginFill("#550055");
+            e3.graphics.drawCircle(430,285,10);
+            //add
+            stage.addChild(player);
+			stage.addChild(shikaku);
+            stage.addChild(hako);
+            stage.addChild(e1);
+            stage.addChild(e2);
+            stage.addChild(e3);
+            document.onkeydown = keydown;
+
+            function keydown(e) {
+               // キーコード(どのキーが押されたか)を取得
+                var keyCode = e.keyCode;
+               // console.log(event.keyCode);
+                var target = document.getElementById("msg");
+                target.innerHTML = "キー値:" + e.keyCode;
+               // 条件文で船の位置を変更する
+                if (keyCode == 68) { // 右
+
+                  player.x += 5; // 移動 
+                } else if (keyCode == 65) { // 左
+                  player.x -= 5;   
+                } else if (keyCode == 83) { // 下
+                  player.y += 5;
+               
+                } else if (keyCode == 87) { // 上
+                  player.y -= 5;
+                }
+              
+            }
+            // 時間経過
+            createjs.Ticker.addEventListener("tick", handleTick);
+            function handleTick() {
+                stage.update(); // 画面更新
+            }
+
+        }
+    </script>
+</body>
+</html>

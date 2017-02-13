@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Aloha.html</title>
+</head>
+<body>
+    <h1>図形</h1>
+    <hr>
+    <canvas id="myCanvas" width="600" height="500"></canvas>
+
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        window.addEventListener('load',init);
+        function init(){
+            var stage = new createjs.Stage("myCanvas");
+            var shikaku = new createjs.Shape();
+            var hosi = new createjs.Shape();
+            var muki = 1;
+            var muki2= 1;
+            // マウス座標を取得する
+            var mx = stage.mouseX;
+            var my = stage.mouseY;
+            var h = Math.random()*10;
+
+            shikaku.graphics.beginFill("#ff0000 ");
+            shikaku.graphics.drawRect(0, 0, 100, 100);
+
+            hosi.graphics.beginFill("#039393"); // 赤色で描画するように設定
+            hosi.graphics.drawPolyStar(0, 0, 70, h, 0.4, -90); //75pxの星を記述
+
+            stage.setTransform(0,0);
+            hosi.regX=0;
+            hosi.regY=0;
+
+            stage.addChild(hosi);
+
+            createjs.Ticker.on('tick',function(){
+                h= Math.random();
+                hosi.x +=Math.random()*50 * muki;
+                
+
+                hosi.y +=Math.random()*50 * muki2;
+
+                if(hosi.x > 500)muki = -1;
+                if(hosi.x < 70)muki =+1;
+                if(hosi.y>300)muki2=-1;
+                if(hosi.y<70)muki2= +1;
+                hosi.rotation+=50;
+                stage.update();
+                
+            });
+        }
+    </script>
+</body>
+</html>
